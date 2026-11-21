@@ -1,0 +1,18 @@
+[package]
+name = "emmu-ws"
+version = "0.1.0"
+edition = "2024"
+description = "Emmu WonderSwan / WonderSwan Color core (WASM + native)"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+# O núcleo de emulação (Swanium) é vendorizado dentro desta pasta, em
+# `vendor/swanian-core`. Nenhum pacote de emulação fica fora do diretório do
+# módulo.
+[dependencies]
+swanium-core = { path = "vendor/swanian-core" }
+bincode = "2"
+wasm-bindgen = "0.2"
+getrandom = { version = "0.4", features = ["wasm_js"] }

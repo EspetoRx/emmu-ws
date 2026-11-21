@@ -1,0 +1,21 @@
+Core de emulação vendorizado em `vendor/swanian-core`
+=====================================================
+
+Upstream: https://github.com/bubio/Swanium
+Commit: 021d61d87110fa2534d61276b7b78da97f6fd343
+Licença: MIT (ver LICENSE)
+
+Arquivos mantidos (subset necessário ao core WonderSwan):
+- crates/core/ (CPU V30MZ, barramento, cartucho, PPU, APU, teclado, driver de frame)
+
+Modificações locais:
+- O manifesto Cargo foi expandido para valores literais (o upstream usa
+  `version.workspace`, `edition.workspace` e `publish.workspace`).
+- A dependência `common` do workspace upstream foi removida: o core não a
+  utiliza. `[lints] workspace = true`, dev-dependencies, benchmarks e exemplos
+  também foram removidos.
+- Nenhuma lógica de emulação foi alterada.
+
+O crate `emmu-ws` usa o `swanium-core` diretamente: ROM carregada sem BIOS,
+resolução nativa 224x144, APU estéreo a 24 kHz e save states com magic
+`EMMUWS01` (o core interno usa `SWANST01`).

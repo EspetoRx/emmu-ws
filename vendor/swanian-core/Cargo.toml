@@ -1,0 +1,16 @@
+# Core WonderSwan vendorizado do Swanium, ajustado para compilar como
+# dependência de caminho dentro do workspace do Emmu.
+[package]
+name = "swanium-core"
+version = "1.0.1"
+edition = "2021"
+publish = false
+
+[features]
+# Compila o perfilador por subsistema (crate::profile). Desligado por padrão.
+profiling = []
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+bincode = { version = "2", default-features = false, features = ["serde", "alloc"] }
+thiserror = "2"
